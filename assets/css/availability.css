@@ -1,0 +1,364 @@
+/* ===================================================
+   Availability Calendar — Laurel Lodge
+   Refined Property Aesthetic · Clear Booked Cross (X) Indicator
+   =================================================== */
+
+/* ---------- Calendar container ---------- */
+.calendar-wrapper {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border: 1px solid #e2e8e8;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(22, 53, 53, 0.04);
+}
+
+/* ---------- Month / year header ---------- */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid #edf2f2;
+  background: #fafcfc;
+}
+
+.calendar-header .month-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #163535;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.calendar-header .nav-arrow {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c7a7b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.calendar-header .nav-arrow:hover {
+  background: #f0f7f7;
+  color: #163535;
+}
+
+.calendar-header .nav-arrow:disabled,
+.calendar-header .nav-arrow[disabled] {
+  color: #ccd5d5;
+  background: transparent;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* ---------- Weekday row ---------- */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid #edf2f2;
+  background: #ffffff;
+}
+
+.calendar-weekdays .weekday {
+  text-align: center;
+  padding: 0.7rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #7d9090;
+}
+
+/* ---------- Date grid ---------- */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #ffffff;
+}
+
+.calendar-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  color: #323b3b;
+  border-bottom: 1px solid #f2f5f5;
+  border-right: 1px solid #f9fbfb;
+  user-select: none;
+}
+
+.calendar-cell:nth-child(7n) {
+  border-right: none;
+}
+
+/* Remove bottom border on last row */
+.calendar-cell.last-row {
+  border-bottom: none;
+}
+
+/* Empty filler cells */
+.calendar-cell.empty {
+  border-bottom-color: transparent;
+  background: #fafcfc;
+}
+
+/* Date inner structure */
+.date-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.date-number {
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+}
+
+/* Available dates (default) */
+.calendar-cell:not(.booked):not(.empty) .date-number {
+  color: #323b3b;
+}
+
+/* Booked dates: Red date number + Red cross indicator */
+.calendar-cell.booked {
+  background-color: #fff9f8;
+}
+
+.calendar-cell.booked .date-number {
+  color: #c0392b;
+  font-weight: 700;
+}
+
+.calendar-cell.booked .date-cross {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
+  color: #c0392b;
+  font-family: 'Arial', sans-serif;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Today indicator — subtle teal underline dot */
+.calendar-cell.today .date-inner::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #2c7a7b;
+}
+
+.calendar-cell.today:not(.booked) .date-number {
+  color: #2c7a7b;
+  font-weight: 700;
+}
+
+.calendar-cell.today.booked .date-inner::after {
+  background-color: #c0392b;
+}
+
+/* ---------- Legend ---------- */
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.25rem;
+  padding: 0.95rem 1rem;
+  border-top: 1px solid #edf2f2;
+  background: #fafcfc;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  color: #556262;
+}
+
+.legend-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.legend-badge.available {
+  background: #f0f4f4;
+  color: #323b3b;
+  border: 1px solid #dbe2e2;
+}
+
+.legend-badge.booked {
+  position: relative;
+  background: #fff0ee;
+  color: #c0392b;
+  border: 1px solid #f6cfcb;
+  font-weight: 700;
+}
+
+.legend-badge.booked .badge-cross {
+  position: absolute;
+  top: -2px;
+  right: 1px;
+  font-size: 9px;
+  font-weight: 900;
+  color: #c0392b;
+  line-height: 1;
+}
+
+/* ---------- CTA area ---------- */
+.availability-cta {
+  text-align: center;
+  padding: 1.5rem 1rem 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.availability-cta p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+}
+
+.availability-cta .cta-links {
+  font-size: 0.92rem;
+}
+
+.availability-cta .cta-links a {
+  color: #2c7a7b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.availability-cta .cta-links a:hover {
+  color: #163535;
+  text-decoration: underline;
+}
+
+.availability-cta .cta-links .separator {
+  margin: 0 0.5rem;
+  color: #bbb;
+}
+
+/* ---------- Loading state ---------- */
+.calendar-loading {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  color: #7d9090;
+  font-size: 0.9rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ---------- Responsive: tablets & small desktops ---------- */
+@media (max-width: 768px) {
+  .calendar-wrapper {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .calendar-cell {
+    height: 44px;
+    font-size: 0.86rem;
+  }
+
+  .date-inner {
+    width: 32px;
+    height: 32px;
+  }
+
+  .calendar-cell.booked .date-cross {
+    font-size: 10px;
+    top: 0px;
+    right: 0px;
+  }
+
+  .calendar-header {
+    padding: 0.9rem 1rem;
+  }
+
+  .calendar-header .month-label {
+    font-size: 1.15rem;
+  }
+
+  .calendar-weekdays .weekday {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+  }
+}
+
+/* ---------- Responsive: phones ---------- */
+@media (max-width: 480px) {
+  .calendar-cell {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+
+  .date-inner {
+    width: 28px;
+    height: 28px;
+  }
+
+  .calendar-cell.booked .date-cross {
+    font-size: 9px;
+    top: -1px;
+    right: -1px;
+  }
+
+  .calendar-header {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .calendar-header .month-label {
+    font-size: 1.05rem;
+  }
+
+  .calendar-header .nav-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .calendar-legend {
+    gap: 1.25rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .legend-item {
+    font-size: 0.76rem;
+  }
+}

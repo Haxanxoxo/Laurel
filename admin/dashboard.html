@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Availability Management - Laurel Lodge Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/" rel="preconnect">
+  <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@400;600;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="admin.css" rel="stylesheet">
+</head>
+<body class="admin-page">
+
+  <!-- Admin Topbar -->
+  <header class="admin-topbar">
+    <div class="topbar-brand">Laurel Lodge Admin</div>
+    <div>
+      <a href="../availability.html" target="_blank" style="margin-right: 1.25rem; font-size: 0.85rem; color: #2c7a7b; text-decoration: none;">View Public Calendar &rarr;</a>
+      <button type="button" id="btnSignOut" class="btn-signout">Sign Out</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="admin-content">
+    <h1 id="dashboardHeading">Availability Management</h1>
+    <p class="admin-subtitle">Click individual dates or shift-click to select a range. Then mark as booked or available.</p>
+
+    <!-- Range mode toggle for touch devices -->
+    <div class="range-mode-toggle">
+      <input type="checkbox" id="rangeModeCheck">
+      <label for="rangeModeCheck">Range Selection Mode (tap start date, then tap end date)</label>
+    </div>
+
+    <!-- Calendar Wrapper -->
+    <div class="admin-calendar-wrapper">
+      <div class="calendar-header">
+        <button class="nav-arrow" id="adminCalPrev" aria-label="Previous month">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <span class="month-label" id="adminCalLabel">Loading...</span>
+        <button class="nav-arrow" id="adminCalNext" aria-label="Next month">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="calendar-weekdays">
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
+        <div class="weekday">Sun</div>
+      </div>
+
+      <div class="calendar-grid" id="adminCalGrid">
+        <div class="calendar-loading">Loading calendar&hellip;</div>
+      </div>
+
+      <div class="calendar-legend">
+        <div class="legend-item">
+          <span class="legend-badge available">12</span>
+          <span>Available</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge booked">
+            12<span class="badge-cross">&#10005;</span>
+          </span>
+          <span>Booked (red number &amp; red cross)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge selected-badge">12</span>
+          <span>Selected</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Toolbar -->
+    <div class="admin-actions">
+      <button type="button" id="btnMarkBooked" class="btn-action btn-book" disabled>Mark as Booked</button>
+      <button type="button" id="btnMarkAvailable" class="btn-action btn-unbook" disabled>Make Available Again</button>
+      <button type="button" id="btnClearSelection" class="btn-clear-selection">Clear Selection</button>
+      <span class="selection-info" id="selectionInfo"></span>
+    </div>
+  </main>
+
+  <!-- Confirmation Modal Dialog -->
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-dialog" role="dialog" aria-modal="true">
+      <h3 id="confirmTitle">Confirm Action</h3>
+      <p id="confirmMessage">Are you sure?</p>
+      <div class="confirm-buttons">
+        <button type="button" class="btn-confirm-cancel" id="confirmCancel">Cancel</button>
+        <button type="button" class="btn-confirm-ok" id="confirmOk">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="admin-toast" id="adminToast"></div>
+
+  <!-- Firebase & Availability API -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/availability-api.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

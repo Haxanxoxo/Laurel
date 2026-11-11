@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Availability - Laurel Lodge @ Mercia Marina</title>
+  <meta name="description" content="Check availability for Laurel Lodge at Mercia Marina, South Derbyshire.">
+  <meta name="keywords" content="laurel lodge, mercia marina, availability, holiday cottage, derbyshire">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/" rel="preconnect">
+  <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/drift-zoom/drift-basic.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Availability Calendar CSS -->
+  <link href="assets/css/availability.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Laurel Lodge</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+         <li class="dropdown"><a href="#"><span>The Lodge</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <a href="lounge.html" title="Lounge" target="_self">Lounge Area</a>
+              <li><a href="dining.html">Dining Area</a></li>
+              <li><a href="kitchen.html">Kitchen Area</a></li>
+              <li><a href="bedroom-1.html">Master Bedroom</a></li>
+				 <li><a href="bedroom-2.html">Double Bedroom</a></li>
+              <li><a href="bedroom-3.html">Twin Bedroom</a></li>
+             <li><a href="bathroom-1.html">Family Bathroom</a></li>
+             
+            </ul>
+          </li>
+          <li><a href="prices.html">Prices</a></li>
+          <li><a href="booking_form_1.pdf" title="booking_form_1.pdf" target="new">Booking Form</a></li>
+          <li><a href="availability.html" class="active">Availability</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <img src="assets/img/apple-touch-icon.png" width="50" height="50" alt=""/>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Availability</h1>
+              <p class="mb-0">Check available dates for Laurel Lodge at Mercia Marina. Dates marked with a red cross (&#10005;) and red number are already booked. To make a reservation, please download our <a href="booking_form_1.pdf" target="new">booking form</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Availability Calendar Section -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 3rem;">
+      <div class="container">
+
+        <!-- Calendar Widget -->
+        <div class="calendar-wrapper" data-aos="fade-up" data-aos-delay="100">
+
+          <!-- Month header -->
+          <div class="calendar-header">
+            <button class="nav-arrow" id="calendarPrev" aria-label="Previous month">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <span class="month-label" id="calendarMonthLabel"></span>
+            <button class="nav-arrow" id="calendarNext" aria-label="Next month">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- Weekday headers -->
+          <div class="calendar-weekdays">
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+            <div class="weekday">Sun</div>
+          </div>
+
+          <!-- Date grid (populated by JS) -->
+          <div class="calendar-grid" id="calendarGrid">
+            <div class="calendar-loading">Loading calendar&hellip;</div>
+          </div>
+
+          <!-- Legend -->
+          <div class="calendar-legend">
+            <div class="legend-item">
+              <span class="legend-badge available">12</span>
+              <span><strong>Available dates</strong></span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-badge booked">
+                12<span class="badge-cross">&#10005;</span>
+              </span>
+              <span><strong>Booked dates</strong> (red number &amp; red cross)</span>
+            </div>
+          </div>
+
+        </div><!-- End calendar-wrapper -->
+
+        <!-- Call to action -->
+        <div class="availability-cta" data-aos="fade-up" data-aos-delay="200">
+          <p>To book available dates, please use our booking form or contact us directly.</p>
+          <div class="cta-links">
+            <a href="booking_form_1.pdf" target="new">Download Booking Form</a>
+            <span class="separator">&middot;</span>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Availability Section -->
+
+  </main>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="copyright">
+              <span><h6> &copy;Copyright</span> <strong class="px-1 sitename">Laurel Lodge</strong> 2020<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, <span>All Rights Reserved</span></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/drift-zoom/Drift.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Firebase & Availability Calendar -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/availability-api.js"></script>
+  <script src="assets/js/availability-calendar.js"></script>
+
+</body>
+
+</html>

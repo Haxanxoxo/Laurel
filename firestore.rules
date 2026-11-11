@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Laurel Lodge Bookings Collection
+    match /bookings/{bookingId} {
+
+      // Anyone (public visitors & search crawlers) can read booking dates
+      // in order to render the availability calendar.
+      allow read: if true;
+
+      // Only authenticated users (Stephen, the lodge manager) can create new bookings.
+      // Validates that required fields are present and end_date is on or after start_date.
+      allow create: if request.auth != null
+                    && request.resource.data.start_date is string
+                    && request.resource.data.end_date is string
+                    && request.resource.data.end_date >= request.resource.data.start_date;
+
+      // Only authenticated users can modify existing bookings.
+      allow update: if request.auth != null
+                    && request.resource.data.start_date is string
+                    && request.resource.data.end_date is string
+                    && request.resource.data.end_date >= request.resource.data.start_date;
+
+      // Only authenticated users can delete bookings.
+      allow delete: if request.auth != null;
+    }
+
+    // Default deny for any other document paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
