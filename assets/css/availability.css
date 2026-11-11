@@ -4,6 +4,43 @@
    =================================================== */
 
 /* ---------- Calendar container ---------- */
+.calendar-top-bar {
+  max-width: 800px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-admin-access {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #6a7c7c;
+  background: #ffffff;
+  border: 1px solid #dbe2e2;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-admin-access i {
+  font-size: 0.82rem;
+  color: #2c7a7b;
+}
+
+.btn-admin-access:hover {
+  color: #163535;
+  border-color: #2c7a7b;
+  background: #f4f8f8;
+  text-decoration: none;
+}
+
 .calendar-wrapper {
   max-width: 800px;
   margin: 0 auto 2rem;

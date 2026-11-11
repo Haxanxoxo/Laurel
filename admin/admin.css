@@ -151,20 +151,24 @@ body.admin-page {
 }
 
 .admin-topbar .btn-signout {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
   border: 1px solid #d0d5d5;
-  color: #666;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.8rem;
+  color: #555;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.82rem;
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 2px;
-  transition: all 0.2s;
+  border-radius: 3px;
+  transition: all 0.2s ease;
 }
 
 .admin-topbar .btn-signout:hover {
   border-color: #c0392b;
   color: #c0392b;
+  background: #fdf6f5;
 }
 
 .admin-content {

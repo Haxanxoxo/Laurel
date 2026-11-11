@@ -453,18 +453,24 @@
   }
 
   // -----------------------------------------------------------------------
-  // Sign out
+  // Sign out / Exit Admin
   // -----------------------------------------------------------------------
   function handleSignOut() {
+    var btn = document.getElementById('btnSignOut');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = 'Exiting&hellip;';
+    }
+
     var api = getAPI();
-    if (api) {
+    if (api && typeof api.signOut === 'function') {
       api.signOut().then(function() {
-        window.location.href = 'index.html';
+        window.location.href = '../availability.html';
       }).catch(function() {
-        window.location.href = 'index.html';
+        window.location.href = '../availability.html';
       });
     } else {
-      window.location.href = 'index.html';
+      window.location.href = '../availability.html';
     }
   }
 
